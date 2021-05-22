@@ -1,6 +1,7 @@
 <template>
   <div class="vue-tool-list">
     <el-table :data="tableData"
+              :size="medium"
               style="width: 100%">
       <el-table-column prop="date"
                        label="日期"

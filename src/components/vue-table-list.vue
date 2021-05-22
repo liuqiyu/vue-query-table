@@ -1,7 +1,13 @@
 <template>
   <div class="vue-table-list">
     <el-table :data="tableData"
-              style="width: 100%">
+              border
+              size="mini"
+              style="width: 100%"
+              @selection-change="handleSelectionChange">
+      <el-table-column type="selection"
+                       width="42">
+      </el-table-column>
       <el-table-column prop="date"
                        label="日期"
                        width="180">
@@ -39,6 +45,11 @@ export default {
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄'
       }]
+    }
+  },
+  methods: {
+    handleSelectionChange (rows) {
+      console.log(rows)
     }
   }
 }
