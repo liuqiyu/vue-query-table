@@ -1,17 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <VueQueryTable :config="config"></VueQueryTable>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import VueQueryTable from './components'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    VueQueryTable
+  },
+  data () {
+    return {
+      config: {
+        http: {},
+        options: {},
+        columns: [],
+        operation: {
+          fixed: 'right',
+          label: '操作',
+          width: '150px',
+          options: [
+            {
+              label: '编辑',
+              icon: 'el-icon-edit-outline',
+              type: 'icon',
+              func: row => this.handleUpdate(row)
+            },
+            {
+              label: '删除',
+              icon: 'iconfont iconshanchu',
+              type: 'icon',
+              func: row => this.handleDelete(row)
+            }
+          ]
+        },
+        formatter: {}
+      }
+    }
   }
 }
 </script>
